@@ -1,12 +1,10 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {StatusBar, StyleSheet, Text, View} from 'react-native';
 import React from 'react';
+import MainContainer from './src/navigation/MainContainer';
+import {SafeAreaProvider, SafeAreaView} from 'react-native-safe-area-context';
 
 const App = () => {
-  return (
-    <View>
-      <Text>App</Text>
-    </View>
-  );
+  return <MainContainer />;
 };
 
 export default App;
