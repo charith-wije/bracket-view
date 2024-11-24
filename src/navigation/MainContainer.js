@@ -1,17 +1,18 @@
+import {View} from 'react-native';
 import * as React from 'react';
-
 import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 // Screens
 import HomeScreen from '../components/screens/HomeScreen';
-import MatchesScreen from '../components/screens/MatchesScreen';
 import GroupsScreen from '../components/screens/GroupsScreen';
 import FantasyScreen from '../components/screens/FantasyScreen';
 import MoreScreen from '../components/screens/MoreScreen';
 import MatchesScreenHeader from '../components/organisms/MatchesScreenHeader';
-import {View} from 'react-native';
+import FixturesAndResultsScreen from '../components/screens/MatchesTopTabScreens/FixturesAndResultsScreen';
+import BracketScreen from '../components/screens/MatchesTopTabScreens/BracketScreen';
 
 // Screen Names
 const homeName = 'Home';
@@ -20,12 +21,44 @@ const groupsName = 'Groups';
 const fantacyName = 'Fantacy';
 const moreName = 'More';
 
-const Tab = createBottomTabNavigator();
+const fixturesAndResultsName = 'Fixtures & results';
+const bracketName = 'Bracket';
+
+const BottomTab = createBottomTabNavigator();
+const TopTab = createMaterialTopTabNavigator();
+
+const MatchScreenTopTabs = () => {
+  return (
+    <TopTab.Navigator
+      initialRouteName={fixturesAndResultsName}
+      screenOptions={{
+        tabBarIndicatorStyle: {
+          backgroundColor: 'yellow',
+          height: 2,
+        },
+        tabBarStyle: {
+          backgroundColor: '#011f8c',
+        },
+        tabBarActiveTintColor: 'yellow',
+        tabBarInactiveTintColor: '#e6e6e8',
+        tabBarItemStyle: {width: 150},
+        tabBarLabelStyle: {
+          fontSize: 14,
+        },
+      }}>
+      <TopTab.Screen
+        name={fixturesAndResultsName}
+        component={FixturesAndResultsScreen}
+      />
+      <TopTab.Screen name={bracketName} component={BracketScreen} />
+    </TopTab.Navigator>
+  );
+};
 
 const MainContainer = () => {
   return (
     <NavigationContainer>
-      <Tab.Navigator
+      <BottomTab.Navigator
         initialRouteName={homeName}
         screenOptions={({route}) => ({
           tabBarIcon: ({focused, color, size}) => {
@@ -54,13 +87,13 @@ const MainContainer = () => {
           },
           tabBarActiveTintColor: '#efb810',
           tabBarInactiveTintColor: 'white',
-          tabBarStyle: {backgroundColor: '#335791'},
+          tabBarStyle: {backgroundColor: '#011f8c'},
           headerTitleAlign: 'center',
         })}>
-        <Tab.Screen name={homeName} component={HomeScreen} />
-        <Tab.Screen
+        <BottomTab.Screen name={homeName} component={HomeScreen} />
+        <BottomTab.Screen
           name={matchesName}
-          component={MatchesScreen}
+          component={MatchScreenTopTabs}
           options={{
             headerTitle: () => <MatchesScreenHeader />,
             headerLeft: () => (
@@ -80,10 +113,10 @@ const MainContainer = () => {
             headerStyle: {backgroundColor: 'blue'},
           }}
         />
-        <Tab.Screen name={groupsName} component={GroupsScreen} />
-        <Tab.Screen name={fantacyName} component={FantasyScreen} />
-        <Tab.Screen name={moreName} component={MoreScreen} />
-      </Tab.Navigator>
+        <BottomTab.Screen name={groupsName} component={GroupsScreen} />
+        <BottomTab.Screen name={fantacyName} component={FantasyScreen} />
+        <BottomTab.Screen name={moreName} component={MoreScreen} />
+      </BottomTab.Navigator>
     </NavigationContainer>
   );
 };
