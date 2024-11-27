@@ -9,6 +9,7 @@ const globalStyles = StyleSheet.create({
     secondary: '#2ecc71',
     background: '#f4f4f4',
     text: '#333',
+    videoIcon: 'black',
   },
 
   // Define common typography

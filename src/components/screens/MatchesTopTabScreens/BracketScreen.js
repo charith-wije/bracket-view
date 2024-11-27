@@ -5,13 +5,12 @@ import {getBrackets} from '../../../redux/actions/bracketsAction';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import LevelLabelList from '../../organisms/LevelLabelList';
 import BracketText from '../../atoms/Text/BracketText';
-import BracketImage from '../../atoms/Image/BracketImage';
 import BracketView from '../../atoms/view/BracketView';
 import globalStyles from '../../../styles/globalStyles';
 import MatchCardCountryInfo from '../../molecules/MatchCardCountryInfo';
+import {ITEM_WIDTH} from '../../../constants/constants';
 
 const {width: screenWidth} = Dimensions.get('window');
-const ITEM_WIDTH = screenWidth * 0.8; // Adjust item width
 
 const BracketScreen = () => {
   const {brackets, isLoading, error} = useSelector(state => state.brackets);
@@ -23,8 +22,6 @@ const BracketScreen = () => {
   useEffect(() => {
     dispatch(getBrackets());
   }, []);
-
-  console.log(JSON.stringify(brackets));
 
   const quaterFinals = brackets?.data?.filter(
     el => el.level === 'QUARTER_FINAL',
@@ -69,7 +66,11 @@ const BracketScreen = () => {
               {'Full time'}
             </BracketText>
             <BracketView style={globalStyles.matchCardVideoButton}>
-              <Ionicons name="play" size={12} color="black" />
+              <Ionicons
+                name="play"
+                size={12}
+                color={globalStyles.colors.videoIcon}
+              />
             </BracketView>
           </BracketView>
           {item.away_team.penalties && (
