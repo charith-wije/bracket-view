@@ -21,6 +21,7 @@ export const bracketsSlice = createSlice({
     });
     builder.addCase(getBrackets.rejected, (state, action) => {
       state.error = 'Server error';
+      state.isLoading = false;
     });
   },
 });

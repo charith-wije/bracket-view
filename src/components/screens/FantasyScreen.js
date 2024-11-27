@@ -10,5 +10,3 @@ const FantasyScreen = () => {
 };
 
 export default FantasyScreen;
-
-const styles = StyleSheet.create({});

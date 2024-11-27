@@ -1,13 +1,15 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet} from 'react-native';
 import React from 'react';
+import BracketView from '../atoms/view/BracketView';
+import BracketText from '../atoms/Text/BracketText';
 
 const MatchesScreenHeader = () => {
   return (
-    <View>
-      <Text style={{fontSize: 20, fontWeight: 'bold', color: 'white'}}>
+    <BracketView>
+      <BracketText style={{fontSize: 20, fontWeight: 'bold', color: 'white'}}>
         Matches
-      </Text>
-    </View>
+      </BracketText>
+    </BracketView>
   );
 };
 

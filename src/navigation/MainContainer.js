@@ -1,4 +1,3 @@
-import {View} from 'react-native';
 import * as React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
@@ -13,6 +12,7 @@ import MoreScreen from '../components/screens/MoreScreen';
 import MatchesScreenHeader from '../components/organisms/MatchesScreenHeader';
 import FixturesAndResultsScreen from '../components/screens/MatchesTopTabScreens/FixturesAndResultsScreen';
 import BracketScreen from '../components/screens/MatchesTopTabScreens/BracketScreen';
+import BracketView from '../components/atoms/view/BracketView';
 
 // Screen Names
 const homeName = 'Home';
@@ -97,18 +97,18 @@ const MainContainer = () => {
           options={{
             headerTitle: () => <MatchesScreenHeader />,
             headerLeft: () => (
-              <View style={{marginLeft: 15}}>
+              <BracketView style={{marginLeft: 15}}>
                 <Ionicons name="bag-add-outline" size={30} color="white" />
-              </View>
+              </BracketView>
             ),
             headerRight: () => (
-              <View style={{marginRight: 15}}>
+              <BracketView style={{marginRight: 15}}>
                 <Ionicons
                   name="person-circle-outline"
                   size={30}
                   color="white"
                 />
-              </View>
+              </BracketView>
             ),
             headerStyle: {backgroundColor: 'blue'},
           }}

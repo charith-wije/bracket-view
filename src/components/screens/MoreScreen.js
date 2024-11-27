@@ -10,5 +10,3 @@ const MoreScreen = () => {
 };
 
 export default MoreScreen;
-
-const styles = StyleSheet.create({});

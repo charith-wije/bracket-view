@@ -1,15 +1,15 @@
 import {StatusBar, StyleSheet, Text, View} from 'react-native';
 import React from 'react';
+import BracketView from '../atoms/view/BracketView';
+import BracketText from '../atoms/Text/BracketText';
 
 const MatchesScreen = () => {
   return (
-    <View>
+    <BracketView>
       <StatusBar barStyle="dark-content" backgroundColor="blue" />
-      <Text>MatchesScreen</Text>
-    </View>
+      <BracketText>MatchesScreen</BracketText>
+    </BracketView>
   );
 };
 
 export default MatchesScreen;
-
-const styles = StyleSheet.create({});
